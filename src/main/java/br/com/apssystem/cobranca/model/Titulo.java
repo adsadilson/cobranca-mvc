@@ -3,6 +3,7 @@ package br.com.apssystem.cobranca.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -31,16 +32,19 @@ public class Titulo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(length = 85)
 	private String descricao;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	private Date dataVencimento;
+	@Column(name = "data_vencto")
+	private Date dataVencto;
 
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 
 	@Enumerated(EnumType.STRING)
+	@Column(length = 35)
 	private StatusTitulo status;
 
 }
