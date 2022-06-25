@@ -23,7 +23,7 @@ public class TituloController {
 
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("CadastroTitulo");
+		ModelAndView mv = new ModelAndView("titulo/CadastroTitulo");
 		return mv;
 	}
 
@@ -37,7 +37,7 @@ public class TituloController {
 
 	@RequestMapping
 	public String pesquisar() {
-		return "PesquisaTitulos";
+		return "titulo/PesquisaTitulos";
 	}
 
 	@ModelAttribute("todosStatusTitulo")
