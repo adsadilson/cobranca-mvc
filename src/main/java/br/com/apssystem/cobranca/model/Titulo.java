@@ -2,6 +2,7 @@ package br.com.apssystem.cobranca.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,16 +17,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Titulo {
 
 	@Id
@@ -46,5 +38,68 @@ public class Titulo {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 35)
 	private StatusTitulo status;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Date getDataVencto() {
+		return dataVencto;
+	}
+
+	public void setDataVencto(Date dataVencto) {
+		this.dataVencto = dataVencto;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public StatusTitulo getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusTitulo status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Titulo [id=" + id + ", descricao=" + descricao + ", dataVencto=" + dataVencto + ", valor=" + valor
+				+ ", status=" + status + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Titulo other = (Titulo) obj;
+		return Objects.equals(id, other.id);
+	}
 
 }
