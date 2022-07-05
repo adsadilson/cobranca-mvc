@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:p="http://primefaces.org/ui">
 
@@ -19,7 +20,7 @@
 	<!-- inicio sidebar -->
 	<div class="sidebar" layout:fragment="sidebar">
 		<div class="logo-details">
-			<i class='bx bx-lock-alt'></i> <span class="logo_name">SGF</span>
+			<i class='bx bx-lock-alt'></i> <span class="logo_name">SGT</span>
 		</div>
 		<!-- inicio nav -->
 		<ul class="nav-links">
@@ -29,6 +30,7 @@
 				<ul class="sub-menu blank">
 					<li><a class="link_name" href="#">Home</a></li>
 				</ul></li>
+
 			<li>
 				<div class="icon-link">
 					<a href="#"> <i class="bx bx-collection"></i> <span
@@ -70,6 +72,7 @@
 					<li><a href="#">Relatórios</a></li>
 				</ul> <!-- fim do sub-menu -->
 			</li>
+
 			<li><a href="#"> <i class="bx bx-pie-chart-alt-2"></i> <span
 					class="link_name">Backup</span>
 			</a>
