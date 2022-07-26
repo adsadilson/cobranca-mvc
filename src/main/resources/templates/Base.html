@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="heard">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".nav-collapse">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Cobrança</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li th:classappend="${module == 'titulo' ? 'active' : ''}"><a
+					href="#" th:href="@{/titulos}">Pesquisa de Títulos</a></li>
+				<li th:classappend="${module == 'cadastro' ? 'active' : ''}"><a
+					href="#" th:href="@{/titulos/novo}">Cadastro de Títulos</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout" th:href="@{#}"
+					onclick="$('#form').submit();"> <span
+						class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+				</a>
+					<form style="visibility: hidden" id="form" method="post" action="#"
+						th:action="@{/logout}"></form></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div th:fragment="footer">
+	<div id="container-footer">
+		<div id="left-footer" style="margin-left: 10px">Adilson Paraguai
+			(77) 99857-9024</div>
+		<div id="center-footer">Empresa:</div>
+		<div id="right-footer"
+			style="position: relative; float: right; padding-right: 20px">
+			Versão</div>
+	</div>
+</div>
+</html>
+
+

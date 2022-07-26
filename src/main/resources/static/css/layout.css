@@ -193,3 +193,7 @@ nav{
 	max-height:200px;
 	transition: all .4s linear;
 	}
+
+.hidden { 
+		display: none !important;
+	  }
