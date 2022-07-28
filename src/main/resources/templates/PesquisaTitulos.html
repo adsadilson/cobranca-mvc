@@ -39,7 +39,11 @@
 							th:text="${titulo.status.descricao}"
 							th:classappend="${titulo.getCSSClassFromStatus()}">Success</span>
 						</td>
-						<td class="text-center"></td>
+						<td class="text-center">
+							<a class="btn btn-link btn-xs" th:href="@{/titulos/{id}(id=${titulo.id})}">
+	   							<span class="glyphicon glyphicon-pencil"></span>
+	   						</a>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
