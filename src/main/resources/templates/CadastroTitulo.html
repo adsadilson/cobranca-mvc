@@ -9,62 +9,89 @@
 
 <div layout:fragment="conteudo">
 
-	<form class="form-horizontal" method="POST" action="/titulos"
-		th:object="${titulo}">
+	<form class="form-horizontal needs-validation" novalidate method="POST"
+		action="/titulos" th:object="${titulo}" style="margin-top: 50px;">
 
-		<div th:replace="Mensagem"></div>
+		<div th:replace="MensagemErro"></div>
 
-		<div class="panel panel-default">
-		<input type="hidden" th:field="*{id}"/>
-			<div class="panel-heading">
-				<div class="clearfix">
-					<h1 class="panel-title aw-titulo-panel">Novo título</h1>
-					<a class="btn btn-link aw-link-panel" href="/titulos">Voltar
-						para pesquisa</a>
+		<div class="container">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="row mb-1">
+				<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="descricao"
+						th:field="*{descricao}" required>
+					<div class="invalid-feedback">Por favor, digite a descrição.</div>
 				</div>
 			</div>
-
-			<div class="panel-body">
-				<div class="form-group"
-					th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" id="descricao"
-							th:field="*{descricao}" />
-					</div>
+			<div class="row mb-1">
+				<label for="dataVencto" class="col-sm-2 col-form-label">Data
+					de vencimento</label>
+				<div class="col-sm-2">
+					<input type="date" class="form-control" id="dataVencto"
+						th:field="*{dataVencto}" required>
+					<div class="invalid-feedback">Por favor, digite a data
+						vencimento.</div>
 				</div>
-				<div class="form-group"
-					th:classappend="${#fields.hasErrors('dataVencto')} ? has-error">
-					<label for="dataVencto" class="col-sm-2 control-label">Data
-						de vencimento</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="dataVencto"
-							th:field="*{dataVencto}" />
-					</div>
+			</div>
+			<div class="row mb-1">
+				<label for="valor" class="col-sm-2 col-form-label">Valor </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="valor"
+						th:field="*{valor}" required>
+					<div class="invalid-feedback">Por favor, digite o valor.</div>
 				</div>
-				<div class="form-group"
-					th:classappend="${#fields.hasErrors('valor')} ? has-error">
-					<label for="valor" class="col-sm-2 control-label">Valor</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="valor" th:field="*{valor}" />
-					</div>
+			</div>
+			<div class="row mb-1">
+				<label for="status" class="col-sm-2 col-form-label">Status </label>
+				<div class="col-sm-2">
+					<select class="form-select" id="status" th:field="*{status}">
+						<option th:each="status : ${todosStatusTitulo}"
+							th:value="${status}" th:text="${status.descricao}"></option>
+					</select>
 				</div>
-				<div class="form-group">
-					<label for="status" class="col-sm-2 control-label">Status</label>
-					<div class="col-sm-2">
-						<select class="form-control" th:field="*{status}">
-							<option th:each="status : ${todosStatusTitulo}"
-								th:value="${status}" th:text="${status.descricao}"></option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary">Salvar</button>
+			</div>
+			<div class="row mb-1">
+				<div class="col-sm-4 offset-sm-2">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck1">
+						<label class="form-check-label" for="gridCheck1"> Ativo</label>
 					</div>
 				</div>
 			</div>
+			<div class="row mb-1">
+				<div class="col-sm-4 offset-sm-2">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+					<button type="button" class="btn btn-secondary">
+					<a style="color: white;" href="/titulos">Voltar</a></button>
+				</div>
+			</div>
+
 		</div>
+
 	</form>
+	<script>
+	(function () {
+		  'use strict'
+
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.querySelectorAll('.needs-validation')
+
+		  // Loop over them and prevent submission
+		  Array.prototype.slice.call(forms)
+		    .forEach(function (form) {
+		      form.addEventListener('submit', function (event) {
+		        if (!form.checkValidity()) {
+		          event.preventDefault()
+		          event.stopPropagation()
+		        }
+
+		        form.classList.add('was-validated')
+		      }, false)
+		    })
+		})()
+	</script>
+
 </div>
 </html>

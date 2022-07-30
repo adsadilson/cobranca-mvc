@@ -1,3 +1,20 @@
+.label-danger {
+	background-color: #f5c2c7;
+    
+}
+
+.label-success {
+	background-color: #badbcc;
+    
+}
+
+
+.label-warning {
+	background-color: #ffecb5;
+    
+}
+
+
 .navbar-brand {
 	padding-top: 12px;
 }
@@ -71,4 +88,8 @@
 #center-footer {
 	margin: 0 auto;
 	width: auto;
+}
+
+.inputBottom{
+	margin-bottom: 20px;
 }

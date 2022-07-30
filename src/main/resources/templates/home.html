@@ -37,11 +37,81 @@ h2, .h2 {
 
 	<div layout:fragment="conteudo">
 		<br />
-		<div style="margin-left: 50px; height:100px">
+		<div style="margin-left: 50px; height: 100px">
 			<img alt="Logo" src="images/apss2.png">
 		</div>
+
+
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<form class="needs-validation" novalidate id="formCadastro"
+					action="" method="post">
+					<div class="form-group inputBottom">
+						<label for="nome">Nome</label> <input type="text" id="nome"
+							required placeholder="Digito o seu nome." class="form-control">
+						<div class="invalid-feedback">Por favor, digite o seu nome.</div>
+					</div>
+					<div class="form-group inputBottom">
+						<label for="nome">E-mail</label> <input type="text" id="email"
+							placeholder="Digito o seu email." class="form-control">
+					</div>
+					<div class="form-group inputBottom">
+						<label for="nascimento">Nascimento</label> <input type="date"
+							id="nascimento" class="form-control">
+					</div>
+					<div class="form-group inputBottom">
+						<label for="fone">Telefone</label> <input type="text"
+							onkeydown="$(this).mask('(00) 0000-0000')" id="telefone"
+							placeholder="(00) 0000-0000" class="form-control">
+					</div>
+					<div class="form-group inputBottom">
+						<label for="celular">Celular</label> <input type="text"
+							onkeydown="$(this).mask('(00) 00000-0000')" id="celular"
+							placeholder="(00) 00000-0000" class="form-control">
+					</div>
+					<div class="form-group inputBottom">
+						<label for="cpf">CPF</label> <input type="text" id="cpf"
+							onkeydown="$(this).mask('000.000.000-00')"
+							placeholder="000.000.000-00" class="form-control">
+					</div>
+					<div class="form-group inputBottom">
+						<label for="senha">Senha</label> <input type="password" id="senha"
+							placeholder="******" class="form-control">
+					</div>
+					<div class="form-group inputBottom">
+						<label for="confirmarSenha">Confirma de senha</label> <input
+							type="password" id="confirmarSenha" placeholder="******"
+							class="form-control">
+					</div>
+					<button class="btn btn-primary" type="submit" name="botao"
+						id="botao">Cadastrar dados</button>
+				</form>
+			</div>
+			<div class="col-lg-3"></div>
+		</div>
+
 	</div>
+	<script>
+	(function () {
+		  'use strict'
 
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.querySelectorAll('.needs-validation')
 
+		  // Loop over them and prevent submission
+		  Array.prototype.slice.call(forms)
+		    .forEach(function (form) {
+		      form.addEventListener('submit', function (event) {
+		        if (!form.checkValidity()) {
+		          event.preventDefault()
+		          event.stopPropagation()
+		        }
+
+		        form.classList.add('was-validated')
+		      }, false)
+		    })
+		})()
+	</script>
 </body>
 </html>

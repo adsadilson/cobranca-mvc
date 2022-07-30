@@ -5,53 +5,49 @@
 <head>
 <meta charset="UTF-8" />
 <title>Pesquisa de títulos</title>
+
 </head>
 
 <div layout:fragment="conteudo">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<div class="clearfix">
-				<h1 class="panel-title aw-titulo-panel">Pesquisa de títulos</h1>
-				<a class="btn btn-link aw-link-panel" href="/titulos/novo">Novo
-					título</a>
-			</div>
-		</div>
 
-		<div class="panel-body">
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th class="text-center col-md-1">#</th>
-						<th>Decrição</th>
-						<th class="text-center col-md-2">Data de vencimento</th>
-						<th class="text-right col-md-2">Valor</th>
-						<th class="text-center col-md-2">Status</th>
-						<th class="col-md-1"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="titulo : ${titulos}">
-						<td class="text-center" th:text="${titulo.id}">1</td>
-						<td th:text="${titulo.descricao}"></td>
-						<td class="text-center" th:text="${{titulo.dataVencto}}"></td>
-						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center"><span class="label"
-							th:text="${titulo.status.descricao}"
-							th:classappend="${titulo.getCSSClassFromStatus()}">Success</span>
-						</td>
-						<td class="text-center">
-							<a class="btn btn-link btn-xs" th:href="@{/titulos/{id}(id=${titulo.id})}">
-	   							<span class="glyphicon glyphicon-pencil"></span>
-	   						</a>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
-							título foi encontrado</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+
+	<table class="table table-bordered table-striped"
+		style="margin-top: 130px;">
+		<thead>
+			<tr>
+				<th class="text-center col-md-1">#</th>
+				<th>Decrição</th>
+				<th class="text-center col-md-2">Vencimento</th>
+				<th class="text-right col-md-2">Valor</th>
+				<th class="text-center col-md-2">Status</th>
+				<th class="text-center col-md-1">Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="titulo : ${titulos}"
+				th:classappend="${titulo.getCSSClassFromStatus()}">
+				<td class="text-center" th:text="${titulo.id}">1</td>
+				<td th:text="${titulo.descricao}"></td>
+				<td class="text-center" th:text="${{titulo.dataVencto}}"></td>
+				<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>
+				<td class="text-center"><span class="label"
+					th:text="${titulo.status.descricao}">Success</span></td>
+				<td class="text-center"><a class="btn btn-link btn-xs"
+					th:href="@{/titulos/{id}(id=${titulo.id})}"> <img alt="editar"
+						src="icons/pencil.svg">
+				</a> <a class="btn btn-link btn-xs" data-bs-toggle="modal"
+					data-bs-target="#confirmacaoExclusaoModal"
+					th:attr="data-codigo=${titulo.id}, data-descricao=${titulo.descricao}">
+						<img alt="excluir" src="icons/trash.svg">
+				</a></td>
+			</tr>
+			<tr>
+				<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
+					título foi encontrado</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div th:insert="DialogoConfirmacaoExclusao"></div>
 </div>
 </html>
