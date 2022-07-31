@@ -8,5 +8,7 @@ public interface TituloService {
 
 	public void salvar(Titulo titulo);
 	
+	public void excluir(Long id);
+	
 	public List<Titulo> listarTodosTitulos();
 }

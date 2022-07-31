@@ -1,21 +1,22 @@
+$('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
+	var button = $(event.relatedTarget);
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  'use strict'
+	var codigoTitulo = button.data('codigo');
+	var descricaoTitulo = button.data('descricao');
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
+	var modal = $(this);
+	var form = modal.find('form');
+	var action = form.data('url-base');
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
+	if (!action.endsWith('/')) {
+		action += '/';
+	}
+	form.attr('action', action + codigoTitulo);
 
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
+	modal.find('.modal-body span').html('Tem certeza que deseja excluir o título: <strong>' + descricaoTitulo + '</strong>?');
+});
+
+
+$(function() {
+	$('[rel="tooltip"]').tooltip();
+});

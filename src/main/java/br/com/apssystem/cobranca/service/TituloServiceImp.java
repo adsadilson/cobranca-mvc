@@ -12,16 +12,21 @@ import br.com.apssystem.cobranca.repository.TituloRepository;
 public class TituloServiceImp implements TituloService {
 
 	@Autowired
-	private TituloRepository tituloRepository;
+	private TituloRepository repository;
 
 	@Override
 	public void salvar(Titulo titulo) {
-		tituloRepository.save(titulo);
+		repository.save(titulo);
 	}
 
 	@Override
 	public List<Titulo> listarTodosTitulos() {
-		return tituloRepository.findAll();
+		return repository.findAll();
+	}
+
+	@Override
+	public void excluir(Long id) {
+		repository.deleteById(id);
 	}
 
 }
